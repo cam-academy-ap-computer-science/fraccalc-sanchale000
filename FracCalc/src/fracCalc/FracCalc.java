@@ -1,10 +1,22 @@
 package fracCalc;
+import java.util.*;
 
 public class FracCalc {
 
-    public static void main(String[] args) 
-    {
-        // TODO: Read the input from the user and call produceAnswer with an equation
+    public static void main(String[] args){
+    	// TODO: Read the input from the user and call produceAnswer with an equation
+    	Scanner console = new Scanner(System.in);
+    	boolean stop = false;
+    	while (stop = false) {
+    	String input = console.nextLine();
+    	if (input.contentEquals("quit")) {
+    		stop = true;
+    	} else {
+    		produceAnswer(input);
+    	}
+    	}
+    	
+    	
 
     }
     
@@ -16,9 +28,9 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String input)
-    { 
+    public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
+    	
         
         return "";
     }
