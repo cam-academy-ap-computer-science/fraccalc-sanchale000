@@ -73,7 +73,7 @@ public class FracCalc {
 	    	
 	    	
 	        
-	        return wholeTwo;
+	        return wholeOne;
 	    }
 
 	  
