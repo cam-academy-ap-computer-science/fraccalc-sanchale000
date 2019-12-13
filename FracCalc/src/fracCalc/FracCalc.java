@@ -68,12 +68,36 @@ public class FracCalc {
 	    	} else { 
 	    		wholeTwo = "0";
 	    	}
+	    	if (numOne.indexOf("/") != -1) { //numerator one
+	    		if (numOne.indexOf("_") != -1) {
+	    			numerOne = numOne.substring(numOne.indexOf("_")+1, numOne.indexOf("/"));
+	    			denomOne = numOne.substring(numOne.indexOf("/")+1,numOne.length());
+	    		} else {
+	    			numerOne = numOne.substring(0, numOne.indexOf("/"));
+	    		}
+	    	} else {
+	    		numerOne = "0";
+	    	}
+	    	
+    	    if (numTwo.indexOf("/") != -1) { //numerator one
+    		    if (numTwo.indexOf("_") != -1) {
+    			    numerTwo = numTwo.substring(numTwo.indexOf("_")+1, numTwo.indexOf("/"));
+    			    denomTwo = numTwo.substring(numTwo.indexOf("/")+1, numTwo.length());
+    		    } else {
+    			    numerTwo = numTwo.substring(0, numTwo.indexOf("/"));
+    		    }
+    	    } else {
+    		    numerTwo = "0";
+    	    }
+    	    
+	    	
+	    	
 	    		
 	    	
 	    	
 	    	
 	        
-	        return wholeOne;
+	        return numerTwo;
 	    }
 
 	  
