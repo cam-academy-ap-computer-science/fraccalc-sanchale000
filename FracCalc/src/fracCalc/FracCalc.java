@@ -1,7 +1,32 @@
 package fracCalc;
 
 import java.util.*;
-
+/*Frac Calc Should:
+ *	Parse String into two substrings
+ *		substrings contain two numbers
+ *		store operator as char for future use
+ *
+ *	Parse substrings 
+ *		store a substring as whole 
+ *		store a substring as numerator
+ *		store a substring as denominator
+ *		do this for first and second numbers
+ *
+ *	Use parseInt to turn strings into numbers
+ *		make sure to watch negative numbers
+ *		
+ *	Compute numbers
+ *		simplify numbers into improper fractions
+ *		multiply denominators to make a common denominator
+ *		compute numbers with a series of if statements based on operator
+ *
+ *	Returning
+ *		Print (computed numerator + \ + computed denominator)
+ *
+ *	Include sentinel loop for "quit"
+ *		
+ * 	
+ */
 public class FracCalc {
 		public static void main(String[] args){
 	    	
@@ -11,7 +36,7 @@ public class FracCalc {
 	    	while (stop == false) {
 	    	System.out.print("Input?");
 	    	String input = console.nextLine();
-	    	if (input.contentEquals("quit")) {
+	    	if (input.contentEquals("quit")) {  //stop thing
 	    		stop = true;
 	    	} else {
 	    	i = produceAnswer(input);
@@ -19,7 +44,7 @@ public class FracCalc {
 	    	System.out.print(i);
 	    	System.out.println();
 	    	}
-	    	
+	    	System.out.println("Done");
 	    	
 
 	    }
@@ -36,7 +61,7 @@ public class FracCalc {
 	       
 	    	int spaceLoc = 0;
 	    	char operator = ' ';  //would definitely have to rework whole program for extra credit 
-	    	String numOne = "";
+	    	String numOne = "";  // declaring all my variables all at once because I didn't know about arrays and it's easier to change them then
 	    	String numTwo = "";
 	    	String numerOne = "";
 	    	String denomOne = "";
@@ -44,18 +69,16 @@ public class FracCalc {
 	    	String numerTwo = "";
 	    	String denomTwo = "";
 	    	String wholeTwo = "";
-	    	String temporary = "";
 	    	int wholenumOne = 0;
 	    	int wholenumTwo = 0;
 	    	int numernumOne = 0;
 	    	int numernumTwo = 0;
 	    	int denomnumOne = 0;
 	    	int denomnumTwo = 0;
-	    	int tempInt = 0;
 	    	String tempString = "";
 	    	
 	    	
-	    	if (input.indexOf(" ") != -1) {
+	    	if (input.indexOf(" ") != -1) { //breaking string into numbers
 	    		spaceLoc = input.indexOf(" ");
 	    		operator = input.charAt(spaceLoc + 1);
 	    		numOne = input.substring(0, spaceLoc);
@@ -82,7 +105,7 @@ public class FracCalc {
 	    		wholeTwo = "0";
 	    	}
 	    	System.out.println("wholeTwo " + wholeTwo);
-	    	if (numOne.indexOf("/") != -1) { //numerator two
+	    	if (numOne.indexOf("/") != -1) { //numerator and denominator one
 	    		if (numOne.indexOf("_") != -1) {
 	    			numerOne = numOne.substring(numOne.indexOf("_")+1, numOne.indexOf("/"));
 	    			denomOne = numOne.substring(numOne.indexOf("/")+1,numOne.length());
@@ -96,7 +119,7 @@ public class FracCalc {
 	    	}
 	    	System.out.println("numerOne " + numerOne);
 	    	System.out.println("denomOne " + denomOne);
-    	    if (numTwo.indexOf("/") != -1) { //numerator two
+    	    if (numTwo.indexOf("/") != -1) { //numerator and denominator two
     		    if (numTwo.indexOf("_") != -1) {
     			    numerTwo = numTwo.substring(numTwo.indexOf("_")+1, numTwo.indexOf("/"));
     			    denomTwo = numTwo.substring(numTwo.indexOf("/")+1, numTwo.length());
@@ -110,15 +133,25 @@ public class FracCalc {
     	    }
     	    System.out.println("numerTwo " + numerTwo);
     	    System.out.println("denomTwo " + denomTwo);
-    	    
-    	    wholenumOne = Integer.parseInt(wholeOne); //parsing numbers
-    	    numernumOne = Integer.parseInt(numerOne);
+    	    // parsing numbers
+    	    wholenumOne = Integer.parseInt(wholeOne); //number one 
+    	    if (wholeOne.indexOf("-") != -1) {
+    	    	numernumOne = -1 * (Integer.parseInt(numerOne));
+    	    } else {
+    	    	numernumOne = Integer.parseInt(numerOne);
+    	    }
     	    denomnumOne = Integer.parseInt(denomOne);
-    	    wholenumTwo = Integer.parseInt(wholeTwo);
-    	    numernumTwo = Integer.parseInt(numerTwo);
+    	    wholenumTwo = Integer.parseInt(wholeTwo); //number two
+    	    if (wholeTwo.indexOf("-") != -1) {
+    	    	numernumTwo = -1 * (Integer.parseInt(numerTwo));
+    	    } else {
+    	    	numernumTwo = Integer.parseInt(numerTwo);
+    	    }
     	    denomnumTwo = Integer.parseInt(denomTwo);
-    	    numernumOne = (((wholenumOne * denomnumOne) + numernumOne) * denomnumTwo);
+    	    numernumOne = (((wholenumOne * denomnumOne) + numernumOne) * denomnumTwo); //modifying numbers to be in a "useable state"
+    	    System.out.println("numernumOne " + numernumOne);
     	    numernumTwo = (((wholenumTwo * denomnumTwo) + numernumTwo) * denomnumOne );
+    	    System.out.println("numernumTwo " + numernumTwo);
     	    denomnumOne = (denomnumOne * denomnumTwo);
     	    
     	    if ((denomnumOne == 0) || (denomnumTwo == 0)) { //calculating values based on operator
