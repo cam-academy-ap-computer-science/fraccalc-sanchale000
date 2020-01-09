@@ -187,7 +187,7 @@ public class FracCalc {
     	    		numernumOne = numernumOne/t3;
     	    		denomnumOne = denomnumOne/t3;
     	    	}
-    	    } else if (numernumOne < denomnumOne) {
+    	    } else {
     	    	t2 = numernumOne;
     	    	t3 = denomnumOne;
     	    	while (t2!= t3) {
@@ -200,8 +200,17 @@ public class FracCalc {
     	    		numernumOne = numernumOne/t3;
     	    		denomnumOne = denomnumOne/t3;
     	    	}
+    	    	
+    	    }
+    	    if(t1 != 0) {
+    	    	tempString = t1 + "_" + numernumOne + "/" + denomnumOne;
+    	    } else if (numernumOne < denomnumOne) {
+    	    	tempString = numernumOne + "/" + denomnumOne;
+    	    } else { 
+    	    	tempString = 
+    	    }
     	    
-    	    tempString = (numernumOne + "/" + denomnumOne);
+    	    
     	    
 	        return tempString;
 	    }
