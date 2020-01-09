@@ -76,10 +76,10 @@ public class FracCalc {
 	    	int denomnumOne = 0;
 	    	int denomnumTwo = 0;
 	    	String tempString = "";
-	    	int t1 = 0;
-	    	int t2 = 0;
-	    	int t3 = 0;
-	    	int t4 = 0;
+	    	int store1 = 0;
+	    	int store2 = 0;
+	    	int store3 = 0;
+	    	int gcd = 0;
 	    	
 	    	
 	    	if (input.indexOf(" ") != -1) { //breaking string into numbers
@@ -173,44 +173,30 @@ public class FracCalc {
     	    } else {
     	    	return "Error: invalid operator";
     	    }
-    	    if (numernumOne > denomnumOne) {
-    	    	t1 = numernumOne / denomnumOne;
-    	    	t2 = numernumOne % denomnumOne;
-    	    	t3 = denomnumOne;
-    	    	while (t2!= t3) {
-    	        	if(t2 > t3)
-    	                t2 = t2 - t3;
-    	            else
-    	                t3= t3 - t2;
-    	        }
-    	    	if (t2/t3 != 0) {
-    	    		numernumOne = numernumOne/t3;
-    	    		denomnumOne = denomnumOne/t3;
-    	    	}
-    	    } else {
-    	    	t2 = numernumOne;
-    	    	t3 = denomnumOne;
-    	    	while (t2!= t3) {
-    	        	if(t2 > t3)
-    	                t2 = t2 - t3;
-    	            else
-    	                t3= t3 - t2;
-    	        }
-    	    	if (t2/t3 != 0) {
-    	    		numernumOne = numernumOne/t3;
-    	    		denomnumOne = denomnumOne/t3;
-    	    	}
-    	    	
-    	    }
-    	    if(t1 != 0) {
-    	    	tempString = t1 + "_" + numernumOne + "/" + denomnumOne;
-    	    } else if (numernumOne < denomnumOne) {
-    	    	tempString = numernumOne + "/" + denomnumOne;
-    	    } else { 
-    	    	tempString = 
-    	    }
+    	    System.out.println("numernumOne post operator " + numernumOne);
+    	    System.out.println("denomnumOne post operator " + denomnumOne);
+    	    System.out.println(numernumOne + "/" + denomnumOne);
     	    
+    	    store1 = numernumOne; //start simplifying
+	    	store2 = denomnumOne;
+	    	while (denomnumOne != Math.abs(numernumOne)) {
+	        	if(denomnumOne > Math.abs(numernumOne)) {
+	                denomnumOne = denomnumOne - Math.abs(numernumOne);
+	        	}else {
+	        		numernumOne = Math.abs(numernumOne) - denomnumOne;
+	        	}
+	        }
+	    	gcd = numernumOne;
+	    	numernumOne = store1;
+	    	denomnumOne = store2;
+	    	numernumOne = numernumOne / gcd;
+	    	denomnumOne = denomnumOne / gcd;
     	    
+	    	if (numernumOne > denomnumOne ) {
+	    		store1 = numernumOne / denomnumOne;
+	    		store2 = numernumOne % denomnumOne;
+	    		tempstring = store1 + "_" + ""
+	    	}
     	    
 	        return tempString;
 	    }
