@@ -61,7 +61,7 @@ public class FracCalc {
 	       
 	    	int spaceLoc = 0;
 	    	char operator = ' ';  //would definitely have to rework whole program for extra credit 
-	    	String numOne = "";  // declaring all my variables all at once because I didn't know about arrays and it's easier to change them then
+	    	String numOne = "";  // declaring all my variables all at once 
 	    	String numTwo = "";
 	    	String numerOne = "";
 	    	String denomOne = "";
@@ -76,6 +76,10 @@ public class FracCalc {
 	    	int denomnumOne = 0;
 	    	int denomnumTwo = 0;
 	    	String tempString = "";
+	    	int t1 = 0;
+	    	int t2 = 0;
+	    	int t3 = 0;
+	    	int t4 = 0;
 	    	
 	    	
 	    	if (input.indexOf(" ") != -1) { //breaking string into numbers
@@ -169,6 +173,34 @@ public class FracCalc {
     	    } else {
     	    	return "Error: invalid operator";
     	    }
+    	    if (numernumOne > denomnumOne) {
+    	    	t1 = numernumOne / denomnumOne;
+    	    	t2 = numernumOne % denomnumOne;
+    	    	t3 = denomnumOne;
+    	    	while (t2!= t3) {
+    	        	if(t2 > t3)
+    	                t2 = t2 - t3;
+    	            else
+    	                t3= t3 - t2;
+    	        }
+    	    	if (t2/t3 != 0) {
+    	    		numernumOne = numernumOne/t3;
+    	    		denomnumOne = denomnumOne/t3;
+    	    	}
+    	    } else if (numernumOne < denomnumOne) {
+    	    	t2 = numernumOne;
+    	    	t3 = denomnumOne;
+    	    	while (t2!= t3) {
+    	        	if(t2 > t3)
+    	                t2 = t2 - t3;
+    	            else
+    	                t3= t3 - t2;
+    	        }
+    	    	if (t2/t3 != 0) {
+    	    		numernumOne = numernumOne/t3;
+    	    		denomnumOne = denomnumOne/t3;
+    	    	}
+    	    
     	    tempString = (numernumOne + "/" + denomnumOne);
     	    
 	        return tempString;
