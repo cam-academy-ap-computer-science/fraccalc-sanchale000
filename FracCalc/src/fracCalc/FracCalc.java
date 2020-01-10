@@ -187,15 +187,26 @@ public class FracCalc {
 	        	}
 	        }
 	    	gcd = numernumOne;
+	    	System.out.println("gcd " + gcd);
 	    	numernumOne = store1;
 	    	denomnumOne = store2;
 	    	numernumOne = numernumOne / gcd;
 	    	denomnumOne = denomnumOne / gcd;
-    	    
-	    	if (numernumOne > denomnumOne ) {
+	    	
+	    	if (numernumOne == 0) {
+	    		tempString = "0";
+	    	} else if (Math.abs(numernumOne) > denomnumOne ) {
 	    		store1 = numernumOne / denomnumOne;
 	    		store2 = numernumOne % denomnumOne;
-	    		tempstring = store1 + "_" + ""
+	    		if (store2 != 0) {
+	    			tempString = store1 + "_" + Math.abs(store2) + "/" + denomnumOne;
+	    		} else {
+	    			tempString = "" + store1;
+	    		}
+	    	} else if (denomnumOne > Math.abs(numernumOne)) {
+	    		tempString = numernumOne + "/" + denomnumOne;
+	    	} else {
+	    		tempString = "" + numernumOne/denomnumOne;
 	    	}
     	    
 	        return tempString;
