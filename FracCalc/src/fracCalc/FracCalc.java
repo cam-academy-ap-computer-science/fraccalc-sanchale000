@@ -92,9 +92,7 @@ public class FracCalc {
 	    	} else {
 	    		return "Error: invalid input";
 	    	}
-	    	System.out.println(numOne);
-	    	System.out.println(numTwo);
-	    	System.out.println(operator);
+	    	
 	    	if (numOne.indexOf("_") != -1) { //whole number one
 	    		wholeOne = numOne.substring(0, numOne.indexOf("_"));	    		
 	    	} else if (numOne.indexOf("/") == -1) { 
@@ -102,7 +100,7 @@ public class FracCalc {
 	    	} else { 
 	    		wholeOne = "0";
 	    	}
-	    	System.out.println("wholeOne " + wholeOne);
+	    	
 	    	if (numTwo.indexOf("_") != -1) { //whole number two
 	    		wholeTwo = numTwo.substring(0, numTwo.indexOf("_"));	    		
 	    	} else if (numTwo.indexOf("/") == -1) { 
@@ -110,7 +108,7 @@ public class FracCalc {
 	    	} else { 
 	    		wholeTwo = "0";
 	    	}
-	    	System.out.println("wholeTwo " + wholeTwo);
+	    	
 	    	if (numOne.indexOf("/") != -1) { //numerator and denominator one
 	    		if (numOne.indexOf("_") != -1) {
 	    			numerOne = numOne.substring(numOne.indexOf("_")+1, numOne.indexOf("/"));
@@ -123,8 +121,7 @@ public class FracCalc {
 	    		numerOne = "0";
 	    		denomOne = "1";
 	    	}
-	    	System.out.println("numerOne " + numerOne);
-	    	System.out.println("denomOne " + denomOne);
+	    	
     	    if (numTwo.indexOf("/") != -1) { //numerator and denominator two
     		    if (numTwo.indexOf("_") != -1) {
     			    numerTwo = numTwo.substring(numTwo.indexOf("_")+1, numTwo.indexOf("/"));
@@ -137,8 +134,7 @@ public class FracCalc {
     		    numerTwo = "0";
     		    denomTwo = "1";
     	    }
-    	    System.out.println("numerTwo " + numerTwo);
-    	    System.out.println("denomTwo " + denomTwo);
+    	   
     	    // parsing numbers
     	    wholenumOne = Integer.parseInt(wholeOne); //number one 
     	    if (wholeOne.indexOf("-") != -1) {
@@ -155,9 +151,9 @@ public class FracCalc {
     	    }
     	    denomnumTwo = Integer.parseInt(denomTwo);
     	    numernumOne = (((wholenumOne * denomnumOne) + numernumOne) * denomnumTwo); //modifying numbers to be in a "useable state"
-    	    System.out.println("numernumOne " + numernumOne);
+    	   
     	    numernumTwo = (((wholenumTwo * denomnumTwo) + numernumTwo) * denomnumOne );
-    	    System.out.println("numernumTwo " + numernumTwo);
+    	 
     	    denomnumOne = (denomnumOne * denomnumTwo);
     	    
     	    if ((denomnumOne == 0) || (denomnumTwo == 0)) { //calculating values based on operator
@@ -175,8 +171,7 @@ public class FracCalc {
     	    } else {
     	    	return "Error: invalid operator";
     	    }
-    	    System.out.println("numernumOne post operator " + numernumOne);
-    	    System.out.println("denomnumOne post operator " + denomnumOne);
+    	   
     	    System.out.println(numernumOne + "/" + denomnumOne);
     	    
     	    store1 = numernumOne; //start simplifying
@@ -189,15 +184,13 @@ public class FracCalc {
 	        	}
 	        }
 	    	gcd = numernumOne;
-	    	System.out.println("gcd " + gcd);  //divide both numbers by gcd
+	    	  //divide both numbers by gcd
 	    	numernumOne = store1;
 	    	denomnumOne = store2;
 	    	numernumOne = numernumOne / gcd;
 	    	denomnumOne = denomnumOne / gcd;
 	    	
-	    	if (numernumOne == 0) {  // decide how to correctly display numbers
-	    		tempString = "0";
-	    	} else if (Math.abs(numernumOne) > denomnumOne ) {
+	    	 if (Math.abs(numernumOne) > denomnumOne ) {
 	    		store1 = numernumOne / denomnumOne;
 	    		store2 = numernumOne % denomnumOne;
 	    		if (store2 != 0) {
@@ -205,8 +198,7 @@ public class FracCalc {
 	    		} else {
 	    			tempString = "" + store1;
 	    		}
-	    	} else if (denomnumOne > Math.abs(numernumOne)) {
-	    		tempString = numernumOne + "/" + denomnumOne;
+	    	
 	    	} else {
 	    		tempString = "" + numernumOne/denomnumOne;
 	    	}
