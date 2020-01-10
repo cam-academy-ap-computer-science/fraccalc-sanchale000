@@ -21,7 +21,9 @@ import java.util.*;
  *		compute numbers with a series of if statements based on operator
  *
  *	Returning
- *		Print (computed numerator + \ + computed denominator)
+ *		calculate gcd of two numbers
+ *		divide numbers by gcd
+ *		use a series of if statements to produce correctly displaying output
  *
  *	Include sentinel loop for "quit"
  *		
@@ -179,7 +181,7 @@ public class FracCalc {
     	    
     	    store1 = numernumOne; //start simplifying
 	    	store2 = denomnumOne;
-	    	while (denomnumOne != Math.abs(numernumOne)) {
+	    	while (denomnumOne != Math.abs(numernumOne)) {  // gcd calculator
 	        	if(denomnumOne > Math.abs(numernumOne)) {
 	                denomnumOne = denomnumOne - Math.abs(numernumOne);
 	        	}else {
@@ -187,13 +189,13 @@ public class FracCalc {
 	        	}
 	        }
 	    	gcd = numernumOne;
-	    	System.out.println("gcd " + gcd);
+	    	System.out.println("gcd " + gcd);  //divide both numbers by gcd
 	    	numernumOne = store1;
 	    	denomnumOne = store2;
 	    	numernumOne = numernumOne / gcd;
 	    	denomnumOne = denomnumOne / gcd;
 	    	
-	    	if (numernumOne == 0) {
+	    	if (numernumOne == 0) {  // decide how to correctly display numbers
 	    		tempString = "0";
 	    	} else if (Math.abs(numernumOne) > denomnumOne ) {
 	    		store1 = numernumOne / denomnumOne;
