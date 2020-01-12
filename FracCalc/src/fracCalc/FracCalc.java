@@ -36,29 +36,23 @@ public class FracCalc {
 	    	String i = "";
 	    	boolean stop = false;
 	    	while (stop == false) {
-	    	System.out.print("Input?");
-	    	String input = console.nextLine();
-	    	if (input.contentEquals("quit")) {  //stop thing
-	    		stop = true;
-	    	} else {
-	    	i = produceAnswer(input);
-	    	}
-	    	System.out.print(i);
-	    	System.out.println();
+	    		System.out.print("Input?");
+	    		String input = console.nextLine();
+	    		if (input.contentEquals("quit")) {  //stop 
+	    			stop = true;
+	    		} else {
+	    			i = produceAnswer(input);
+	    			System.out.print(i);
+	    			System.out.println();
+	    		}
+	    	
 	    	}
 	    	System.out.println("Done");
 	    	
 
 	    }
 	    
-	    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
-	    // This function takes a String 'input' and produces the result
-	    //
-	    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
-	    //      e.g. input ==> "1/2 + 3/4" 1 + 
-	    //        
-	    // The function should return the result of the fraction after it has been calculated
-	    //      e.g. return ==> "1_1/4"
+	   
 	    public static String produceAnswer(String input) { 
 	       
 	    	int spaceLoc = 0;
@@ -80,7 +74,6 @@ public class FracCalc {
 	    	String tempString = "";
 	    	int store1 = 0;
 	    	int store2 = 0;
-	    	int store3 = 0;
 	    	int gcd = 0;
 	    	
 	    	
@@ -171,34 +164,52 @@ public class FracCalc {
     	    } else {
     	    	return "Error: invalid operator";
     	    }
+    	    
     	   
-    	    System.out.println(numernumOne + "/" + denomnumOne);
+    	    
+    	    if (numernumOne == 0) {  // print 0 if numerator is equal to 0
+    	    	return "0";
+    	    }
     	    
     	    store1 = numernumOne; //start simplifying
 	    	store2 = denomnumOne;
-	    	while (denomnumOne != Math.abs(numernumOne)) {  // gcd calculator
-	        	if(denomnumOne > Math.abs(numernumOne)) {
-	                denomnumOne = denomnumOne - Math.abs(numernumOne);
+	    	denomnumOne = Math.abs(denomnumOne);
+	    	numernumOne = Math.abs(numernumOne);
+	    	while (denomnumOne != numernumOne) {  // gcd calculator, its not very efficient, so it takes a while with big numvers
+	        	if(denomnumOne > numernumOne) {
+	                denomnumOne = denomnumOne - numernumOne;
+	                System.out.print("a");
 	        	}else {
-	        		numernumOne = Math.abs(numernumOne) - denomnumOne;
+	        		numernumOne = numernumOne - denomnumOne;
+	        		System.out.print("b");
+	        		
 	        	}
 	        }
-	    	gcd = numernumOne;
-	    	  //divide both numbers by gcd
+	    	
+	    	gcd = numernumOne; //divide both numbers by gcd
 	    	numernumOne = store1;
 	    	denomnumOne = store2;
+	    	System.out.println("");
+	    	System.out.println(numernumOne + "/" + denomnumOne);
 	    	numernumOne = numernumOne / gcd;
 	    	denomnumOne = denomnumOne / gcd;
-	    	
-	    	 if (Math.abs(numernumOne) > denomnumOne ) {
+	    
+	    	if (Math.abs(numernumOne) > Math.abs(denomnumOne)) {  //decide how to correctly print numbers
 	    		store1 = numernumOne / denomnumOne;
 	    		store2 = numernumOne % denomnumOne;
+	    		System.out.println("store1 " + store1);
+	    		System.out.println("store2 " + store2);
 	    		if (store2 != 0) {
-	    			tempString = store1 + "_" + Math.abs(store2) + "/" + denomnumOne;
+	    			tempString = store1 + "_" + Math.abs(store2) + "/" + Math.abs(denomnumOne);
 	    		} else {
 	    			tempString = "" + store1;
 	    		}
-	    	
+	    	} else if (Math.abs(numernumOne) < Math.abs(denomnumOne)) {
+	    		if (denomnumOne < 0) {
+	    			tempString = (-1 * numernumOne) + "/" + (-1 *denomnumOne);
+	    		} else {
+	    			tempString = numernumOne + "/" + denomnumOne;
+	    		}
 	    	} else {
 	    		tempString = "" + numernumOne/denomnumOne;
 	    	}
