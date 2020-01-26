@@ -1,0 +1,21 @@
+Total Grade:  102/115
+
+Input Parsing: 10/15
+Addition & Subtraction: 20/20
+Multiplication & Division: 20/20
+Fraction Reduction: 5/15
+Output is a Mixed Fraction: 15/15
+Handles Mixed Fractions: 10/10
+Handles Negatives: 15/15
+Code Comments: 5/5
+
+Extra Credit Error Handling: 2/4
+
+I removed points for Input Parsing because you left your debug printouts in the final program.
+Your math all works perfectly, but your method of calculating the gcd is SO slow that on
+some large numbers I couldn't wait long enough to get an answer.  I'm not sure if it ever would
+have gotten to an answer or not.  I replaced your gcd function with a quicker one, and was then
+able to run all the other tests and confirm that all your other logic was correct.
+
+Your error handling did great with divide by zero conditions.  It couldn't handle 1 ++ 3, though,
+or 3_3_3 / 2, so 2 points extra credit.
